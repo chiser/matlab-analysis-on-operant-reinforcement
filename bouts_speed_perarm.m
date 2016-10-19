@@ -1,4 +1,4 @@
-function[mean_first,mean_second,mean_third,speed,delete,bout_arm_discrete]=bouts_speed_perarm(flyTracks)
+function[mean_first,mean_second,mean_third,speed,delete]=bouts_speed_perarm(flyTracks)
 
 speed=squeeze(sqrt(sum(diff(flyTracks.centroid(1:10:end,:,:)).^2,2)))./repmat(diff(flyTracks.tStamps(1:10:end,:)),1,size(flyTracks.centroid,3));
 
@@ -37,7 +37,7 @@ end
 
 bout_arm_discrete=arm_location(transitions(1:end-1));
 
-
+    
 first_arm_bouts=arm_bouts(bout_arm_discrete==1,:);
 second_arm_bouts=arm_bouts(bout_arm_discrete==2,:);
 third_arm_bouts=arm_bouts(bout_arm_discrete==3,:);
